@@ -1,0 +1,39 @@
+# workflow that periodically updates the original integration branch with the integration from the homeassistant repo
+
+name: Update Original integration
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  schedule:
+    - cron:  '0 10 * * *'
+  
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:  
+  update_original_integration:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: original_integration
+    - name: Checkout home assistant repo
+      uses: actions/checkout@v3
+      with:
+        repository: home-assistant/core
+        path: './ha'
+    - name: Move daikin folder
+      run: |
+          mv ha/homeassistant/components/daikin/ custom_components/
+          rm -r custom_components/daikin_custom
+          mv custom_components/daikin custom_components/daikin_custom
+          
+    - name: push
+      run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add custom_components
+          git commit -m "update original integratiosn"
+          git push
+    
