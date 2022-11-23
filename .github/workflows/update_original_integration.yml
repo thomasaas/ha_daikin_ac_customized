@@ -2,14 +2,13 @@
 
 name: Update Original integration
 
-# Controls when the action will run. Workflow runs when manually triggered using the UI
-# or API.
+
 on:
+  workflow_dispatch:
   schedule:
     - cron:  '0 10 * * *'
   
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:  
   update_original_integration:
     runs-on: ubuntu-latest
