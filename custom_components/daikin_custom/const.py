@@ -1,7 +1,6 @@
 """Constants for Daikin."""
 
-DOMAIN = "daikin_custom"
-
+DOMAIN = "daikin"
 
 ATTR_TARGET_TEMPERATURE = "target_temperature"
 ATTR_INSIDE_TEMPERATURE = "inside_temperature"

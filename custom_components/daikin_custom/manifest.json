@@ -1,6 +1,7 @@
 {
-  "domain": "daikin_custom",
-  "name": "Daikin AC Customized",
+  "domain": "daikin",
+  "name": "Daikin AC",
+  "codeowners": ["@fredrike"],
   "config_flow": true,
   "documentation": "https://www.home-assistant.io/integrations/daikin",
   "iot_class": "local_polling",
